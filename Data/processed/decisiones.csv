@@ -1,0 +1,23 @@
+paso,columna,accion,filas_afectadas,justificacion
+paso 3,asistencia_pct,quitar símbolo %,300,El % impide que la columna sea numérica; el valor no cambia al quitarlo
+paso 3,asistencia_pct,guion a nulo y convertir a número,202,El guion significa 'sin dato'; como nulo real se puede tratar en el paso 7
+paso 3,horas_trabajo_semana,guion a nulo y convertir a número,2822,El guion significa 'sin dato'; se revisa en el paso 8 con la columna trabaja
+paso 3,distancia_km,999 a nulo,152,"999 es un código de 'sin dato', no una distancia real; deja la media inflada"
+paso 4,programa,"unificar escrituras con strip, lower y diccionario",260,"Eran el mismo valor escrito distinto; si no se unifican, un grupo se parte en varios"
+paso 4,jornada,"unificar escrituras con strip, lower y diccionario",485,"Eran el mismo valor escrito distinto; si no se unifican, un grupo se parte en varios"
+paso 4,genero,"unificar escrituras con strip, lower y diccionario",559,"Eran el mismo valor escrito distinto; si no se unifican, un grupo se parte en varios"
+paso 4,ciudad_procedencia,"unificar escrituras con strip, lower y diccionario",542,"Eran el mismo valor escrito distinto; si no se unifican, un grupo se parte en varios"
+paso 5,fecha_matricula,convertir a fecha con dos formatos,3052,Había fechas en AAAA-MM-DD y en DD/MM/AAAA; con un solo formato la mitad quedaría vacía
+paso 6,todas,eliminar filas duplicadas,150,Tienen el mismo id_estudiante y todos los datos iguales: es el mismo estudiante registrado dos veces y contaría doble en las tasas
+paso 7,promedio_acumulado,eliminar filas,298,Una nota no se puede inventar: imputarla escondería la relación entre nota y deserción
+paso 7,ciudad_procedencia,reemplazar nulos por 'Sin dato',96,"Eliminar al estudiante haría perder su nota, asistencia y estado, que sí son útiles"
+paso 7,tipo_colegio,reemplazar nulos por 'Sin dato',145,"Eliminar al estudiante haría perder su nota, asistencia y estado, que sí son útiles"
+paso 7,motivo_retiro,dejar como nulo,6562,Nulo esperado: la pregunta solo aplica a desertores
+paso 7,asistencia_pct,dejar como nulo,197,Inventar la asistencia distorsionaría la pregunta 5; quedan fuera de los cuartiles
+paso 7,distancia_km,dejar como nulo,334,Ninguna de las cinco preguntas usa la distancia; imputarla no aporta
+paso 8,promedio_acumulado,dividir entre 20 (escala 0-100 a 0-5),15,Los valores estaban en escala 0-100; al convertirlos quedan dentro del rango normal de notas
+paso 8,edad,edades fuera de 15-60 a nulo y luego mediana (22.0),12,Son errores de registro; la mediana no se afecta por los extremos como el 150
+paso 8,horas_trabajo_semana,nulo a 0 si trabaja es 'no',2707,"Si el estudiante no trabaja, sus horas de trabajo son 0; el guion significaba 'no aplica'"
+paso 8,horas_trabajo_semana,más de 100 a mediana de quienes trabajan (24.0),29,Nadie trabaja más de 100 horas y estudia; la mediana de quienes trabajan es un valor realista
+paso 9,desertor,crear columna True/False desde estado,9702,Permite calcular la tasa de deserción como el promedio de True
+paso 9,cuartil_asistencia,dividir asistencia_pct en 4 grupos con qcut,9505,Grupos de tamaño parecido dan tasas más confiables que los valores exactos

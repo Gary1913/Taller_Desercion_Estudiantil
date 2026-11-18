@@ -335,4 +335,4 @@ Es mejor usar señales de lo que le está pasando al estudiante, como la
 asistencia y las materias reprobadas. En este análisis son las más
 relacionadas con la deserción: la tasa baja de 61,9 % en Q1 a 9,4 % en Q4, y
 los desertores tienen 3,07 materias reprobadas frente a 0,62 de los activos.
-Además, las registra la institución, así que son más difíciles de falsear.
+Además, las registra la institución, así que son más difíciles de suplantar.
